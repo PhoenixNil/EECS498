@@ -247,9 +247,8 @@ def svm_loss_vectorized(
     #############################################################################
     # Replace "pass" statement with your code
     temp = margin
-    temp[margin > 0] = 1  # 将所有错误类别的margin设为1
-    # 加上对应的Xi（j!=yi），或者减去若干个 Xi（j==yi),
-    temp[torch.arange(X.shape[0]), y] = -torch.sum(temp, dim=1)
+    temp[margin > 0] = 1   #不正确的类DW的梯度为Xi
+    temp[torch.arange(X.shape[0]), y] = -torch.sum(temp, dim=1) #正确类DW的梯度为-nXi  
     dW = torch.mm(X.t(), temp)
     dW /= X.shape[0]
     dW += reg*2*W

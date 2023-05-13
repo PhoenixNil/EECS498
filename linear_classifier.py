@@ -228,8 +228,8 @@ def svm_loss_vectorized(
     correct_scores = scores[torch.arange(X.shape[0]), y]  # (N, )
     correct_scores = correct_scores.reshape(-1, 1)  # (N, 1)
     margin = scores - correct_scores + 1  # (N, C)
-    margin = torch.max(torch.zeros_like(scores), scores - correct_scores + 1)
-    margin[torch.arange(X.shape[0]), y] = 0  # j==y[i], margin[i, y[i]] = 0
+    margin = torch.max(torch.zeros_like(scores), scores - correct_scores + 1) #非正确分类，损失要么为0要么为score - correct_score + 1
+    margin[torch.arange(X.shape[0]), y] = 0  # 正确分类，损失为0
     loss = margin.sum(-1).mean()  # averaged over samples
     loss += reg * torch.sum(W * W)
     #############################################################################

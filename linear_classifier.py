@@ -549,7 +549,7 @@ def softmax_loss_vectorized(
     loss /= num_train
     loss += reg*torch.sum(W*W)
     temp = score_exp/sum_exp_scores.reshape(-1, 1) #错误类别的梯度
-    temp[torch.arange(num_train), y] -= 1  #减去正确类别的gradient
+    temp[torch.arange(num_train), y] -= 1  #正确类别的gradient
     dW = torch.mm(X.t(), temp)
     dW /= X.shape[0]
     dW += reg*2*W

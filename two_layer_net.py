@@ -235,8 +235,8 @@ def nn_forward_backward(
     # tensor of same size                                                     #
     ###########################################################################
     # Replace "pass" statement with your code
-    d_scores=exp_scores/sum_exp_scores #错误类别的梯度
-    d_scores[torch.arange(N), y] -= 1 #减去正确类别的梯度
+    d_scores=exp_scores/sum_exp_scores #错误类的梯度等于softmax后的值
+    d_scores[torch.arange(N), y] -= 1 #正确类别的梯度=softmax后的值-1
     d_scores /= N
 
     grads['b2'] = d_scores.sum(dim=0)

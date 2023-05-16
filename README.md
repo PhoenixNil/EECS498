@@ -1,3 +1,3 @@
 # EECS498
 computer vision Michigan coursework
-you can view the answer for individual assignment in different branches
+website https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/

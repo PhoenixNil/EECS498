@@ -36,3 +36,7 @@ eecs598/__pycache__/solver.cpython-39.pyc
 eecs598/__pycache__/vis.cpython-39.pyc
 __pycache__/a3_helper.cpython-39.pyc
 __pycache__/fully_connected_networks.cpython-39.pyc
+best_two_layer_net.pth
+best_overfit_five_layer_net.pth
+one_minute_deepconvnet.pth
+overfit_deepconvnet.pth
